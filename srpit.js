@@ -1,0 +1,22 @@
+const display = document.getElementById("display");
+const buttons = document.querySelectorAll(".btn");
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    const value = button.textContent;
+
+    if (button.classList.contains("clear")) {
+      display.value = "";
+    } else if (button.classList.contains("equal")) {
+      try {
+        display.value = eval(display.value
+          .replace("×", "*")
+          .replace("÷", "/"));
+      } catch {
+        display.value = "Error";
+      }
+    } else {
+      display.value += value;
+    }
+  });
+});
